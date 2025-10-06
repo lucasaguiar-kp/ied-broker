@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Broker {
+  id        String   @id @default(ulid())
+  host      String
+  port      Int
+  username  String
+  password  String
+  caCert    String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  topics Topic[]
+
+  @@map("brokers")
+}
+
+model Topic {
+  id        String   @id @default(ulid())
+  topic     String   @unique
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  brokerId String
+  broker   Broker @relation(fields: [brokerId], references: [id], onDelete: Cascade)
+
+  @@map("topics")
+}

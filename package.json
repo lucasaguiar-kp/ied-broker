@@ -1,0 +1,37 @@
+{
+  "name": "iot-broker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun --hot src/server.ts",
+    "db:migrate": "prisma migrate dev",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:build": "docker-compose build"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/node": "^22",
+    "eslint": "^9",
+    "eslint-config-prettier": "^10.1.2",
+    "prettier": "3.5.3",
+    "prisma": "6.10.1",
+    "typescript": "5.8.3"
+  },
+  "dependencies": {
+    "@prisma/client": "6.10.1",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/morgan": "^1.9.10",
+    "cors": "^2.8.5",
+    "express": "5.1.0",
+    "morgan": "^1.10.0",
+    "mqtt": "^5.10.1",
+    "socket.io": "^4.8.1",
+    "zod": "3.25.67"
+  }
+}
