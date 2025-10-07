@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "bun --hot src/server.ts",
+    "build": "bun build src/server.ts --outdir dist --target bun",
+    "start": "bun run dist/server.js",
     "db:migrate": "prisma migrate dev",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
